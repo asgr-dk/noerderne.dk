@@ -5,7 +5,7 @@ import Browser.Navigation
 import Element exposing (Element, el)
 import Element.Input
 import Url exposing (Url)
-
+import Element.Font as Font
 
 type alias Flags =
     {}
@@ -39,12 +39,15 @@ view model =
             [ Element.width Element.fill
             , Element.height Element.fill
             ]
-            (el
-                [ Element.centerX
-                , Element.centerY
-                ]
-                (Element.text "Hello World!")
-            )
+            (Element.column [Element.spacing 10]
+            [ Element.image [ Element.width Element.fill ]
+              { src = "/image/cano_summer_2026.jpg", description = "..." }
+            , el [] (Element.text "Nørderne")
+            , el [] (Element.text "CVR 46258711")
+            , Element.link [ Font.underline ] { label = Element.text "mail@noerderne.dk", url = "mailto:mail@noerderne.dk" }
+            , Element.newTabLink [ Font.underline ] { label = Element.text "stiftelsesdokument", url = "/document/deed.md" }
+            , Element.newTabLink [ Font.underline ] { label = Element.text "vedtægter", url = "/document/bylaws.md" }
+            ])
         ]
     }
 
